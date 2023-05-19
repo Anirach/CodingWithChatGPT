@@ -1,7 +1,6 @@
 import random
 import string
 
-# Define a function to generate a password
 def generate_password(length):
     chars = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(random.choice(chars) for i in range(length))
