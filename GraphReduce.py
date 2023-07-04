@@ -1,15 +1,15 @@
-#Gennerate directed graph with A->B, A->I, A->D,C->B,C->D,D->A,D->E,D->J,E->D,E->F,G->E,F->H,H->F,H->G,J->D,J->G,J->I,I->H 
-#Reduce the graph to left only the node that can reach any other node
-#Plot the graph with networkx and matplotlib
-#diplay the diameter of the graph
-#display shortest path between A and F
-#display average shortest path form A to all other nodes
+# Gennerate directed graph with A->B, A->I, A->D,C->B,C->D,D->A,D->E,D->J,E->D,E->F,G->E,F->H,H->F,H->G,J->D,J->G,J->I,I->H 
+# Reduce the graph to left only the node that can reach any other node
+# Plot the graph with networkx and matplotlib
+# diplay the diameter of the graph
+# display shortest path between A and F
+# display average shortest path form A to all other nodes
 
 import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
-G.add_edges_from([('A','B'),('A','I'),('A','D'),('C','B'),('C','D'),('D','A'),('D','E'),('D','J'),('E','D'),('E','F'),('G','E'),('F','H'),('H','F'),('H','G'),('J','D'),('J','G'),('J','I'),('I','H')])
+G.add_edges_from([('A', 'B'), ('A','I'),('A','D'),('C','B'),('C','D'),('D','A'),('D','E'),('D','J'),('E','D'),('E','F'),('G','E'),('F','H'),('H','F'),('H','G'),('J','D'),('J','G'),('J','I'),('I','H')])
 
 #make a list remove1 of all nodes that only point to other nodes
 remove1 = []
@@ -35,11 +35,13 @@ plt.show()
 print("Diameter of the graph is: ",nx.diameter(G))
 print("Shortest path between A and F is: ",nx.shortest_path(G,'A','F'))
 
-#funtion to print the shortest path given a node to all other nodes and its length and the average shortest path from A to all other nodes
+# funtion to print the shortest path given a node to all other nodes and its length and the average shortest path from A to all other nodes
+
+
 def printShortestPath(xnode):
     sumAvr = 0
     for node in G.nodes():
-        print("Shortest path between ",xnode," and ",node," is: ",nx.shortest_path(G,xnode,node)," and its length is: ",nx.shortest_path_length(G,xnode,node))
+        print("Shortest path between ", xnode, " and ", node, " is: ", nx.shortest_path(G, xnode, node), " and its length is: ",nx.shortest_path_length(G,xnode,node))
         sumAvr += nx.shortest_path_length(G,xnode,node)
     print("Average shortest path from ",xnode," to all other nodes is: ",sumAvr/(len(G.nodes())-1))
     print("-------------------------------------------")
