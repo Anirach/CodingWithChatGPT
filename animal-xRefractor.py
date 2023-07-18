@@ -1,5 +1,4 @@
 from collections import Counter
-
 def can_construct(animal_counter, string_counter):
     for c in animal_counter:
         if animal_counter[c] > string_counter[c]:
